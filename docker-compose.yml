@@ -1,0 +1,71 @@
+version: '3.3'
+services:
+  payment-nginx:
+    build: payment-process-frontend/.
+    container_name: payment-nginx
+    ports:
+      - "80:80"
+    networks: 
+      - production-network
+    depends_on:
+      - "payment-api-1"
+      - "payment-api-2"
+      - "payment-api-3"
+      
+  payment-api-1:
+    build: payment-process-api/.
+    container_name: payment-api-1
+    ports:
+      - "8080:8080"
+    networks: 
+      - production-network
+    depends_on:
+      - "payment-rabbitmq"
+      - "payment-db"
+  
+  payment-api-2:
+    build: payment-process-api/.
+    container_name: payment-api-2
+    ports:
+      - "8080"
+    networks: 
+      - production-network
+    depends_on:
+      - "payment-rabbitmq"
+      - "payment-db"
+
+  payment-api-3:
+    build: payment-process-api/.
+    container_name: payment-api-3
+    ports:
+      - "8080"
+    networks: 
+      - production-network
+    depends_on:
+      - "payment-rabbitmq"
+      - "payment-db"
+
+  payment-rabbitmq:
+    image: rabbitmq:management
+    container_name: payment-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks: 
+      - production-network
+  
+  payment-db:
+    image: postgres:9.4.5
+    container_name: payment-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: DB_PAYMENT_PROCESS
+    ports:
+      - "5432:5432"
+    networks: 
+      - production-network
+
+networks: 
+    production-network:
+        driver: bridge

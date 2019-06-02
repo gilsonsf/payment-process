@@ -1,0 +1,191 @@
+<main role="main" class="container" style="width: 70%; padding-top: 70px;">
+
+    <h2>Checkout Form</h2>
+    <hr class="mb-4">
+
+    <div class="alert alert-danger" role="alert" *ngIf="error">
+        {{message}}
+    </div>
+    <div class="alert alert-success" role="alert" *ngIf="success">
+        {{message}} <a href="/payment-list" class="alert-link">See all payments</a>
+      </div>
+
+    <div class="row">
+      <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Your cart</span>
+          <span class="badge badge-secondary badge-pill">3</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">Product name</h6>
+              <small class="text-muted">Brief description</small>
+            </div>
+            <span class="text-muted">${{cart.prod01}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">Second product</h6>
+              <small class="text-muted">Brief description</small>
+            </div>
+            <span class="text-muted">${{cart.prod02}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">Third item</h6>
+              <small class="text-muted">Brief description</small>
+            </div>
+            <span class="text-muted">${{cart.prod03}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between bg-light">
+            <div class="text-success">
+              <h6 class="my-0">Promo code</h6>
+              <small>EXAMPLECODE</small>
+            </div>
+            <span class="text-success">-${{cart.prodPromo}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (USD)</span>
+            <strong>${{cart.total}}</strong>
+          </li>
+        </ul>
+        <div class="input-group">
+          <button type="button" class="btn btn-danger float-right" (click)="randomCartValues()" >New randow values for the cart</button>
+        </div>
+        <br/>
+        <div class="input-group">
+            <h6 class="my-0">CLIENT ID: {{payment.client.id}}</h6>
+        </div>
+      </div>
+      
+      <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">Buyer</h4>
+        <form class="needs-validation" #form="ngForm" (ngSubmit)="create()" novalidate>
+
+          <div class="row">
+            <div class="col-md-6 mb-3" [ngClass]="getFromGroupClass(name.invalid, name.dirty)">
+              <label for="name">Name</label>
+              <input type="text"
+              [(ngModel)]="payment.buyer.name" class="form-control" 
+              id="name" 
+              name="name"
+              #name="ngModel"
+              placeholder="Kawhi Leonard" value="" maxlength="30" required>
+              <span class="text-danger" *ngIf="name.invalid && name.dirty">Valid name is required.</span>
+            </div>
+
+            <div class="col-md-6 mb-3" [ngClass]="getFromGroupClass(email.invalid, email.dirty)">
+                <label for="email">Email</label>
+                <input type="text"
+                [(ngModel)]="payment.buyer.email" class="form-control" 
+                id="email" 
+                name="email"
+                #email="ngModel"
+                placeholder="you@example.com" value="" maxlength="30" email>
+                <span class="text-danger" *ngIf="email.invalid && email.dirty">Please enter a valid email address.</span>
+              </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6 mb-3" [ngClass]="getFromGroupClass(CPF.invalid, CPF.dirty)">
+                <label for="name">CPF</label>
+                <input type="text"
+                [(ngModel)]="payment.buyer.CPF" class="form-control" 
+                id="CPF" 
+                name="CPF"
+                #CPF="ngModel"
+                placeholder="221.908.225-44" value="" maxlength="15" required>
+                <span class="text-danger" *ngIf="CPF.invalid && CPF.dirty">Field is required.</span>
+              </div>
+          </div>
+
+          <hr class="mb-4">
+
+          <h4 class="mb-3">Payment</h4>
+
+          <div class="d-block my-3">
+            <div class="custom-control custom-radio">
+              <input id="debit" name="paymentMethod" type="radio" value="BOLETO" (change)="radioChange()"
+              [(ngModel)]="payment.type" class="custom-control-input" checked required>
+              <label class="custom-control-label" for="debit">Boleto</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input id="credit" name="paymentMethod" type="radio" value="CREDIT_CARD" (change)="radioChange()"
+              [(ngModel)]="payment.type" class="custom-control-input"  required>
+              <label class="custom-control-label" for="credit">Credit card</label>
+            </div>
+          </div>
+          <div class="alert alert-info font-weight-bold" role="alert" *ngIf="validCard">
+              CARD: {{payment.card.number}}, VALIDATE: {{payment.card.valid}}, BRAND: {{payment.card.brand}}
+            </div>
+          <div class="row" *ngIf="selectedCard">
+            <div class="col-md-6 mb-3" [ngClass]="getFromGroupClass(holdName.invalid, holdName.dirty)">
+              <label for="holdName">Name on card</label>
+              <input type="text"
+              [(ngModel)]="payment.card.holderName" class="form-control" 
+              id="holdName" 
+              name="holdName"
+              #holdName="ngModel"
+              value="" maxlength="30" required>
+              <small class="text-muted">Full name as displayed on card</small><br/>
+              <span class="text-danger" *ngIf="holdName.invalid && holdName.dirty">Valid Name on card is required.</span>
+            </div>
+  
+            <div class="col-md-6 mb-3" [ngClass]="getFromGroupClass(number.invalid, number.dirty)">
+              <label for="holdName">Credit card number</label>
+              <input type="text"
+              [(ngModel)]="payment.card.number" class="form-control" (blur)="validateCard()"
+              id="number" 
+              name="number"
+              #number="ngModel"
+              value="" maxlength="16" required>
+              <span class="text-danger" *ngIf="number.invalid && number.dirty">Credit card number is required.</span>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="selectedCard">
+
+              <div class="col-md-4 mb-3" [ngClass]="getFromGroupClass(expirationMonth.invalid, expirationMonth.dirty)">
+                <label for="expirationMonth">Expiration Month</label>
+                <input type="text"
+                [(ngModel)]="payment.card.expirationMonth" class="form-control" 
+                id="expirationMonth" 
+                name="expirationMonth"
+                #expirationMonth="ngModel"
+                value="" maxlength="2" required>
+                <span class="text-danger" *ngIf="expirationMonth.invalid && expirationMonth.dirty">Expiration month required.</span>
+              </div>
+              
+              <div class="col-md-4 mb-3" [ngClass]="getFromGroupClass(expirationYear.invalid, expirationYear.dirty)">
+                  <label for="expirationYear">Expiration Year</label>
+                  <input type="text"
+                  [(ngModel)]="payment.card.expirationYear" class="form-control" 
+                  id="expirationYear" 
+                  name="expirationYear"
+                  #expirationYear="ngModel"
+                  value="" maxlength="4" required>
+                  <span class="text-danger" *ngIf="expirationYear.invalid && expirationYear.dirty">Expiration year required.</span>
+                </div>
+                
+                <div class="col-md-4 mb-3" [ngClass]="getFromGroupClass(CVV.invalid, CVV.dirty)">
+                  <label for="CVV">CVV</label>
+                  <input type="text"
+                  [(ngModel)]="payment.card.CVV" class="form-control" 
+                  id="CVV" 
+                  name="CVV"
+                  #CVV="ngModel"
+                  value="" maxlength="4" required>
+                  <span class="text-danger" *ngIf="CVV.invalid && CVV.dirty">Security code required.</span>
+                </div>
+          </div>
+          
+            
+          <hr class="mb-4">
+          
+          <button type="submit" [disabled]="!form.valid" class="btn btn-primary btn-lg btn-block">Continue to checkout</button>
+        </form>
+      </div>
+    </div>
+  </main>

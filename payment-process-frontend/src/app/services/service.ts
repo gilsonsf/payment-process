@@ -1,0 +1,1 @@
+export const PATH_API: string = 'http://localhost:8080/payment-process-api/v1';

@@ -1,0 +1,25 @@
+<main role="main" class="container" style="width: 50%; padding-top: 70px;">
+  <h2>Payment History</h2>
+
+  <div class="box-body">
+      <table class="table table-striped">
+        <tr>
+          <th>ID PAYMENT</th>
+          <th>DATA</th>
+          <th>STATUS</th>
+        </tr>
+        <tr *ngFor="let paymentHistory of paymentsHistory">  
+          <td>{{paymentHistory.payment.id}}</td>
+          <td>{{paymentHistory.date}}</td>
+          
+          <td *ngIf="paymentHistory.status == 'CREATED'"> <span class="badge badge-primary">{{paymentHistory.status}}</span></td>
+          <td *ngIf="paymentHistory.status == 'IN_ANALYSIS'"> <span class="badge badge-secondary">{{paymentHistory.status}}</span></td>
+          <td *ngIf="paymentHistory.status == 'AUTHORIZED'"> <span class="badge badge-success">{{paymentHistory.status}}</span></td>
+          <td *ngIf="paymentHistory.status == 'CANCELLED'"> <span class="badge badge-danger">{{paymentHistory.status}}</span></td>
+          
+        </tr>
+       
+      </table>
+    </div>
+  
+</main>

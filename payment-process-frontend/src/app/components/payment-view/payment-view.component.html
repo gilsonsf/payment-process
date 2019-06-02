@@ -1,0 +1,87 @@
+<main role="main" class="container" style="width: 70%; padding-top: 70px;">
+
+  <h2>Payment Number #{{payment.id}}</h2> 
+  
+  <div class="alert alert-warning">
+    <strong>ATTENTION!</strong> There are a Message Broker (RabbitMQ) that update payment status every 30s.
+    <br/>
+    All Possible status are: <strong> CREATED, IN_ANALYSIS, AUTHORIZED AND CANCELLED.</strong>
+  </div>
+  <hr class="mb-4">
+
+
+  <form class="needs-validation" #form="ngForm" (ngSubmit)="create()" novalidate>
+
+    <h4 class="mb-3">Info</h4>
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label for="name">Amount</label>
+        <p class="font-weight-bold">{{payment.amount | currency}}</p>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="name">Status</label>
+        <p class="font-weight-bold" *ngIf="payment.status == 'CREATED'"> <span class="badge badge-primary">{{payment.status}}</span></p>
+        <p class="font-weight-bold" *ngIf="payment.status == 'IN_ANALYSIS'"> <span class="badge badge-secondary">{{payment.status}}</span></p>
+        <p class="font-weight-bold" *ngIf="payment.status == 'AUTHORIZED'"> <span class="badge badge-success">{{payment.status}}</span></p>
+        <p class="font-weight-bold" *ngIf="payment.status == 'CANCELLED'"> <span class="badge badge-danger">{{payment.status}}</span></p>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="name"></label>
+        <div class="input-group">
+          <button type="button" class="btn btn-danger float-right" (click)="viewHistory()">See Payment History</button>
+        </div>
+      </div>
+
+      
+
+    </div>
+    <h4 class="mb-3">Buyer</h4>
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label for="name">Name</label>
+        <p class="font-weight-bold">{{payment.buyer.name}}</p>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="email">Email</label>
+        <p class="font-weight-bold">{{payment.buyer.email}}</p>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="name">CPF</label>
+        <p class="font-weight-bold">{{payment.buyer.CPF}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-2 mb-3">
+        <label for="name">Type</label>
+        <p class="font-weight-bold">{{payment.type}}</p>
+      </div>
+      <div class="col-md-6 mb-3" *ngIf="!payment.card">
+        <label for="name">BAR CODE</label>
+        <p class="font-weight-bold">846300000037693302962016905109 <span class="badge badge-primary">FIXED</span></p>
+          
+        </div>
+      <div class="card text-white bg-info mb-3" style="max-width: 28rem;" *ngIf="payment.card">
+        <div class="card-header">{{payment.card.brand}}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{payment.card.holderName}}</h5>
+          <h5 class="card-title">{{payment.card.number}}</h5>
+
+          <p class="card-text">Month: {{payment.card.expirationMonth}} Year: {{payment.card.expirationYear}} CVV:
+            {{payment.card.CVV}}</p>
+          <p class="card-text"></p>
+        </div>
+      </div>
+    </div>
+
+    
+
+  </form>
+
+
+</main>

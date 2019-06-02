@@ -1,0 +1,33 @@
+<main role="main" class="container" style="width: 80%; padding-top: 70px;">
+  <h2>Payment List</h2>
+
+  <div class="box-body">
+      <table class="table table-striped">
+        <tr>
+          <th>ID</th>
+          <th>AMOUNT</th>
+          <th>TYPE</th>
+          <th>CLIENT ID</th>
+          <th>BUYER</th>
+          <th>STATUS</th>
+          <th style="width: 10px">&nbsp;</th>
+        </tr>
+        <tr *ngFor="let payment of payments">  
+          <td>{{payment.id}}</td>
+          <td>{{payment.amount | currency}}</td>
+          <td>{{payment.type}}</td>
+          <td>{{payment.client.id}}</td>
+          <td>{{payment.buyer.name}}</td>
+                    
+          <td *ngIf="payment.status == 'CREATED'"> <span class="badge badge-primary">{{payment.status}}</span></td>
+          <td *ngIf="payment.status == 'IN_ANALYSIS'"> <span class="badge badge-secondary">{{payment.status}}</span></td>
+          <td *ngIf="payment.status == 'AUTHORIZED'"> <span class="badge badge-success">{{payment.status}}</span></td>
+          <td *ngIf="payment.status == 'CANCELLED'"> <span class="badge badge-danger">{{payment.status}}</span></td>
+          
+          <td><button class="btn btn-primary btn-sm" id="checkAssign_{{payment.id}}" (click)="view(payment.id)">view</button></td>
+        </tr>
+       
+      </table>
+    </div>
+  
+</main>
