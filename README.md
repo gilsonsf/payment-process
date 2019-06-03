@@ -52,4 +52,9 @@ $ sudo docker-compose up
 
 - [Bootstrap 4](https://getbootstrap.com.br/docs/4.1/getting-started/introduction/)
 
+https://stackoverflow.com/questions/36966337/how-to-generate-a-ddl-creation-script-with-a-modern-spring-boot-data-jpa-and-h
+
+http://markdownpad.com/
+
+
 </details>
