@@ -32,7 +32,6 @@ $ sudo docker-compose up
 ```
 <br><br><br>
 </details>
-<br>
 <details>
 <summary>Technologies</summary>
 <br>
