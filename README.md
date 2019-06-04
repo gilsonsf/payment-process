@@ -9,15 +9,12 @@
 
 <details>
 <summary>Requirements</summary>
-Clone the repositoy:<br><br>
-<code>
-git clone https://github.com/gilsonsf/payment-process.git
-</code>
-<br>
+Clone the repositoy:<br>
 Install <b>Docker</b>: https://docs.docker.com/engine/installation/
 <br>
 Install <b>docker-compose</b>: https://docs.docker.com/compose/install/.
 <br>
+</details>
 <details>
 <summary>Installation</summary>
 <br>
