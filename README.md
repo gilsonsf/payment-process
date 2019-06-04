@@ -72,9 +72,7 @@ History Payment Screen ![view](img/payment-history.png)
 
 ### Installation Load Balancer
 
-<aside class="notice">
- WarningYou must replace `meowmeowmeow` with your personal API key.
-</aside>
+**WARNING**: Be careful, or else!
 
 
 Run the following commands:
