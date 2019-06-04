@@ -1,6 +1,6 @@
 # Payment Process
 
-This is a Simple End-To Application which uses Angular 7 and Bootstrap 4 as Front End running behind NGINX, Spring Boot 1.5.9 generated from Swagger to provide REST APIS to the front end, PostgreSQL as Data Base and RabbitMQ as a Message Broker. All these components is running inside docker containers.
+This is a Simple End-To-End Application which uses Angular 7 and Bootstrap 4 as Front End running behind NGINX, Spring Boot 1.5.9 generated from Swagger to provide REST APIS to the front end, PostgreSQL as Data Base and RabbitMQ as a Message Broker. All these components is running inside docker containers.
 <br>
 JUnit + Mockito was used for testing and Maven to manage project's build and dependencies.
 <br>
