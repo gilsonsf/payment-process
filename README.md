@@ -1,22 +1,23 @@
 # Payment Process
 
-### Overview
+This is a Simple End-To Application which uses Angular 7 and Bootstrap 4 as Front End running behind NGINX, Spring Boot 1.5.9 generated from Swagger to provide REST APIS to the front end, PostgreSQL as Data Base and RabbitMQ as a Message Broker.
+The purpose of this application is simulate an API for payment and a checkout form.
+To help validate a card we use wirecardBrasil/credit-card-validator component.
+
+## Architecture Overview
 
 ![](img/docker-architecture.png)
 
-### How-to
+## How-to
 
-<details>
-<summary>Requirements</summary>
-Clone the repositoy:<br>
+### Requirements
+
 Install <b>Docker</b>: https://docs.docker.com/engine/installation/
-<br>
-Install <b>docker-compose</b>: https://docs.docker.com/compose/install/.
-<br>
-</details>
-<details>
-<summary>Installation</summary>
-<br>
+
+Install <b>docker-compose</b>: https://docs.docker.com/compose/install/
+
+### Installation
+
 Run the following commands:
   
 ```
@@ -24,28 +25,32 @@ $ git clone https://github.com/gilsonsf/payment-process.git
 $ cd payment-process
 $ sudo docker-compose up
 ```
-<br>
-</details>
 
-<details>
-<summary>Accesses</summary>
-<br>
-</details>
+### Accesses
 
-<details>
-<summary>Screenshots</summary>
-<br>
-</details>
+Application http://localhost/ 
 
-<details>
-<summary>Load Balancer</summary>
+Swagger API http://localhost:8080/payment-process-api/v1
 
+HabbitMQ http://localhost:15672/ 
 
-</details>
+### Screenshots
 
-<details>
-<summary>Technologies</summary>
-<br>
+Checkout Screen
+![](img/checkout.png)
+
+List Payment Screen
+![](img/payment-list.png)
+
+View Payment Screen
+![](img/payment-view.png)
+
+History Payment Screen
+![](img/payment-history.png)
+
+### Technologies
+
+- [wirecardBrasil/credit-card-validator](https://github.com/wirecardBrasil/credit-card-validator)
 
 - [Swagger](https://swagger.io/)
 
@@ -63,12 +68,16 @@ $ sudo docker-compose up
 
 - [Bootstrap 4](https://getbootstrap.com.br/docs/4.1/getting-started/introduction/)
 
-https://stackoverflow.com/questions/36966337/how-to-generate-a-ddl-creation-script-with-a-modern-spring-boot-data-jpa-and-h
+## (Plus) Load Balancer Architecture Overview:
 
-http://markdownpad.com/
-
-
-</details>
-
-### Load Balancer Architecture Overview:
 ![](img/docker-architecture-load-balancer.png)
+
+### Installation Load Balancer
+##Warning
+
+Run the following commands:
+  
+```
+$ git clone https://github.com/gilsonsf/payment-process.git
+$ cd payment-process/docker-load-balancer
+$ sudo docker-compose up
