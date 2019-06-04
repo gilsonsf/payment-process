@@ -6,41 +6,17 @@ services:
     ports:
       - "80:80"
     networks: 
-      - production-network
+      - container-network
     depends_on:
-      - "payment-api-1"
-      - "payment-api-2"
-      - "payment-api-3"
+      - "payment-api"
       
-  payment-api-1:
+  payment-api:
     build: payment-process-api/.
-    container_name: payment-api-1
+    container_name: payment-api
     ports:
       - "8080:8080"
     networks: 
-      - production-network
-    depends_on:
-      - "payment-rabbitmq"
-      - "payment-db"
-  
-  payment-api-2:
-    build: payment-process-api/.
-    container_name: payment-api-2
-    ports:
-      - "8080"
-    networks: 
-      - production-network
-    depends_on:
-      - "payment-rabbitmq"
-      - "payment-db"
-
-  payment-api-3:
-    build: payment-process-api/.
-    container_name: payment-api-3
-    ports:
-      - "8080"
-    networks: 
-      - production-network
+      - container-network
     depends_on:
       - "payment-rabbitmq"
       - "payment-db"
@@ -52,7 +28,7 @@ services:
       - "5672:5672"
       - "15672:15672"
     networks: 
-      - production-network
+      - container-network
   
   payment-db:
     image: postgres:9.4.5
@@ -64,8 +40,8 @@ services:
     ports:
       - "5432:5432"
     networks: 
-      - production-network
+      - container-network
 
 networks: 
-    production-network:
+    container-network:
         driver: bridge
