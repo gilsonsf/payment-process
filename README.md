@@ -34,7 +34,7 @@ Application http://localhost/
 
 Swagger API http://localhost:8080/payment-process-api/v1
 
-HabbitMQ http://localhost:15672/ 
+HabbitMQ http://localhost:15672/ user:guest password:guest
 
 ### Screenshots
 
@@ -71,7 +71,11 @@ History Payment Screen ![view](img/payment-history.png)
 ![](img/docker-architecture-load-balancer.png)
 
 ### Installation Load Balancer
-##Warning
+
+<aside class="notice">
+ WarningYou must replace `meowmeowmeow` with your personal API key.
+</aside>
+
 
 Run the following commands:
   
