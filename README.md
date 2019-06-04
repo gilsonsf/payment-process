@@ -56,7 +56,7 @@ History Payment Screen ![view](img/payment-history.png)
 
 **WARNING**: In this POC, application is responsable for creating the database.
 In this scenario where more than one application is installed at the same time to attend a larger number of requests, there is cuncurrency between them, which may result in some errors when creating the database.
-If any container not running and resulting a error like: **exited code 1**, please stop docker **Ctrl + C** and call: **docker-compose up** again.
+If any container not running and resulting a error like: **exited code 1**, please stop docker **Ctrl + C** and running: **docker-compose up** again.
 It will probably work.
 
 
@@ -90,13 +90,11 @@ $ sudo docker-compose up
 
 - [Java](www.java.com)
 
-- [Maven](https://maven.apache.org//
+- [Maven](https://maven.apache.org/)
 
 - [JUnit](https://junit.org/)
 
 - [Mockito](https://site.mockito.org/)
- 
-)
 
 
 
