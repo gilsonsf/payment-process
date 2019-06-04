@@ -4,7 +4,6 @@
 
 ![](img/docker-architecture.png)
 
-<br>
 
 ### How-to
 
