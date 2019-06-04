@@ -2,7 +2,7 @@
 
 ### Overview
 
-![](img/abc.png)
+![](img/docker-architecture.png)
 
 <br>
 
