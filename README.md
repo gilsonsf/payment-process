@@ -4,7 +4,6 @@
 
 ![](img/docker-architecture.png)
 
-
 ### How-to
 
 <details>
@@ -40,9 +39,7 @@ $ sudo docker-compose up
 
 <details>
 <summary>Load Balancer</summary>
-Load Balancer Architecture:
-<br>
-![](img/docker-architecture-load-balancer.png)
+
 
 </details>
 
@@ -72,3 +69,6 @@ http://markdownpad.com/
 
 
 </details>
+
+### Load Balancer Architecture Overview:
+![](img/docker-architecture-load-balancer.png)
