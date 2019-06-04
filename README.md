@@ -1,7 +1,9 @@
 # Payment Process
 
-This is a Simple End-To Application which uses Angular 7 and Bootstrap 4 as Front End running behind NGINX, Spring Boot 1.5.9 generated from Swagger to provide REST APIS to the front end, PostgreSQL as Data Base and RabbitMQ as a Message Broker.
+This is a Simple End-To Application which uses Angular 7 and Bootstrap 4 as Front End running behind NGINX, Spring Boot 1.5.9 generated from Swagger to provide REST APIS to the front end, PostgreSQL as Data Base and RabbitMQ as a Message Broker. All of it is running inside docker containers.
+<br>
 The purpose of this application is simulate an API for payment and a checkout form.
+<br>
 To help validate a card we use wirecardBrasil/credit-card-validator component.
 
 ## Architecture Overview
@@ -36,17 +38,13 @@ HabbitMQ http://localhost:15672/
 
 ### Screenshots
 
-Checkout Screen
-![](img/checkout.png)
+Checkout Screen ![view](img/checkout.png)
 
-List Payment Screen
-![](img/payment-list.png)
+List Payment Screen ![view](img/payment-list.png)
 
-View Payment Screen
-![](img/payment-view.png)
+View Payment Screen ![view](img/payment-view.png)
 
-History Payment Screen
-![](img/payment-history.png)
+History Payment Screen ![view](img/payment-history.png)
 
 ### Technologies
 
