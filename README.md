@@ -8,29 +8,46 @@
 ### How-to
 
 <details>
-<summary>Installation</summary>
-<br>
-
+<summary>Requirements</summary>
 Clone the repositoy:<br><br>
 <code>
 git clone https://github.com/gilsonsf/payment-process.git
 </code>
 <br>
-<br>
 Install <b>Docker</b>: https://docs.docker.com/engine/installation/
-<br>
 <br>
 Install <b>docker-compose</b>: https://docs.docker.com/compose/install/.
 <br>
+<details>
+<summary>Installation</summary>
 <br>
 Run the following commands:
+  
 ```
-$ git clone https://github.com/helix-iot/helix-sandbox
+$ git clone https://github.com/gilsonsf/payment-process.git
 $ cd payment-process
 $ sudo docker-compose up
 ```
-<br><br><br>
+<br>
 </details>
+
+<details>
+<summary>Accesses</summary>
+<br>
+</details>
+
+<details>
+<summary>Screenshots</summary>
+<br>
+</details>
+
+<details>
+<summary>Load Balancer</summary>
+Load Balancer Architecture:
+![](img/docker-architecture-load-balancer.png)
+
+</details>
+
 <details>
 <summary>Technologies</summary>
 <br>
