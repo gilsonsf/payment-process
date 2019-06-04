@@ -46,6 +46,26 @@ View Payment Screen ![view](img/payment-view.png)
 
 History Payment Screen ![view](img/payment-history.png)
 
+## (Plus) Load Balancer Architecture Overview:
+
+![](img/docker-architecture-load-balancer.png)
+
+### Installation Load Balancer
+
+**WARNING**: In this POC, application is responsable for creating the database.
+In this scenario where more than one application is installed at the same time to attend a larger number of requests, there is cuncurrency between them, which may result in some errors when creating the database.
+If any container not running and resulting a error like: **exited code 1**, please stop docker **Ctrl + C** and call: **docker-compose up** again.
+It will probably work.
+
+
+Run the following commands:
+  
+```
+$ git clone https://github.com/gilsonsf/payment-process.git
+$ cd payment-process/docker-load-balancer
+$ sudo docker-compose up
+```
+
 ### Technologies
 
 - [wirecardBrasil/credit-card-validator](https://github.com/wirecardBrasil/credit-card-validator)
@@ -66,18 +86,3 @@ History Payment Screen ![view](img/payment-history.png)
 
 - [Bootstrap 4](https://getbootstrap.com.br/docs/4.1/getting-started/introduction/)
 
-## (Plus) Load Balancer Architecture Overview:
-
-![](img/docker-architecture-load-balancer.png)
-
-### Installation Load Balancer
-
-**WARNING**: Be careful, or else!
-
-
-Run the following commands:
-  
-```
-$ git clone https://github.com/gilsonsf/payment-process.git
-$ cd payment-process/docker-load-balancer
-$ sudo docker-compose up
