@@ -68,7 +68,7 @@ $ cd payment-process/docker-load-balancer
 $ sudo docker-compose up
 ```
 
-### Technologies
+## Technologies
 
 - [wirecardBrasil/credit-card-validator](https://github.com/wirecardBrasil/credit-card-validator)
 
