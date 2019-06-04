@@ -2,6 +2,8 @@
 
 This is a Simple End-To Application which uses Angular 7 and Bootstrap 4 as Front End running behind NGINX, Spring Boot 1.5.9 generated from Swagger to provide REST APIS to the front end, PostgreSQL as Data Base and RabbitMQ as a Message Broker. All these components is running inside docker containers.
 <br>
+JUnit + Mockito was used for testing and Maven to manage project's build and dependencies.
+<br>
 The purpose of this application is simulate an API for payment and a checkout form.
 <br>
 To help validate a card we use wirecardBrasil/credit-card-validator component.
@@ -85,4 +87,17 @@ $ sudo docker-compose up
 - [Angular](https://angular.io/)
 
 - [Bootstrap 4](https://getbootstrap.com.br/docs/4.1/getting-started/introduction/)
+
+- [Java](www.java.com)
+
+- [Maven](https://maven.apache.org//
+
+- [JUnit](https://junit.org/)
+
+- [Mockito](https://site.mockito.org/)
+ 
+)
+
+
+
 
