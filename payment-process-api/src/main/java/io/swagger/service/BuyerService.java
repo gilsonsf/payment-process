@@ -1,5 +1,7 @@
 package io.swagger.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Component;
 
 import io.swagger.model.Buyer;
@@ -9,7 +11,7 @@ public interface BuyerService {
 	
 	Buyer createOrUpdate(Buyer buyer);
 	
-	Buyer findByEmail(String email);
+	Optional<Buyer> findByEmail(String email);
 
 
 }

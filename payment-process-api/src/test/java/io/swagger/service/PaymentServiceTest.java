@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 
+import java.util.Optional;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -99,7 +101,7 @@ public class PaymentServiceTest {
 		buyer.setEmail(email);
 		payment.setBuyer(buyer);
 		
-    	Mockito.when(buyerService.findByEmail(email)).thenReturn(getBuyer());
+    	Mockito.when(buyerService.findByEmail(email)).thenReturn(Optional.of(getBuyer()));
     	Response<Payment> found = paymentService.create(payment);
     	
     	assertFalse(found.getErrors().isEmpty());

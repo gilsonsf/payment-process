@@ -2,6 +2,7 @@ package io.swagger.service.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -138,8 +139,8 @@ public class PaymentServiceImpl implements PaymentService {
 			return;
 		}
 
-		Buyer currentBuyer = buyerService.findByEmail(payment_.getBuyer().getEmail());
-		if (currentBuyer != null) {
+		Optional<Buyer> currentBuyer = buyerService.findByEmail(payment_.getBuyer().getEmail());
+		if (currentBuyer.isPresent()) {
 			response.getErrors().add(payment_.getBuyer().getEmail() + " already in use! Please try another one.");
 			return;
 		}

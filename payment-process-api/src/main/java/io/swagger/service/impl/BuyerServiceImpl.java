@@ -1,5 +1,7 @@
 package io.swagger.service.impl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +21,7 @@ public class BuyerServiceImpl implements BuyerService {
 	}
 
 	@Override
-	public Buyer findByEmail(String email) {
+	public Optional<Buyer> findByEmail(String email) {
 		return this.buyerRepository.findByEmail(email);
 	}
 	
